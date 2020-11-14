@@ -62,17 +62,4 @@ public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandl
         if (onTabDeselected != null)
             onTabDeselected.Invoke();
     }
-
-    [MenuItem("GameObject/UI/TabButton", false)]
-    static void CreateTabButtonInScene(MenuCommand menuCommand)
-    {
-        // Create a custom game object
-        GameObject go = new GameObject("TabButton");
-        // Ensure it gets reparented if this was a context click (otherwise does nothing)
-        GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
-        go.AddComponent<TabButton>();
-        // Register the creation in the undo system
-        Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
-        Selection.activeObject = go;
-    }
 }
