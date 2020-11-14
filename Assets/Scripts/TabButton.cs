@@ -11,10 +11,8 @@ using UnityEditor;
 public class TabButton : MonoBehaviour, IPointerEnterHandler, IPointerClickHandler, IPointerExitHandler
 {
     public bool interactible = true;
-    [Space(10)]
     public TabGroup tabGroup;
-    public Image backgroundImage;
-    [Header("Panel")]
+    [HideInInspector] public Image backgroundImage;
     public GameObject panelToOpen;
     [Space(10)]
     public UnityEvent onTabSelected;
