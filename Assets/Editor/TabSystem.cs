@@ -15,6 +15,18 @@ public class TabSystem : Editor
         // Ensure it gets reparented if this was a context click (otherwise does nothing)
         GameObjectUtility.SetParentAndAlign(go, menuCommand.context as GameObject);
         go.AddComponent<TabButton>();
+        //Text
+        GameObject txt = new GameObject("Text", typeof(Text));
+        Text txtComp = txt.GetComponent<Text>();
+        txtComp.text = "TabButton";
+        txtComp.alignment = TextAnchor.MiddleCenter;
+        txtComp.color = Color.black;
+        RectTransform txtRect = txt.GetComponent<RectTransform>();
+        txtRect.anchorMin = Vector2.zero;
+        txtRect.anchorMax = Vector2.one;
+        txtRect.sizeDelta = Vector2.zero;
+        GameObjectUtility.SetParentAndAlign(txt, go);
+
         // Register the creation in the undo system
         Undo.RegisterCreatedObjectUndo(go, "Create " + go.name);
         Selection.activeObject = go;
